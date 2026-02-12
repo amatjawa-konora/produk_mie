@@ -1,2 +1,181 @@
-# produk_mie
-Ini merupakan website mie dari kelompok kami
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Online Modern</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+/* HEADER */
+header{
+background:#0f172a;
+color:white;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.cart{
+background:#22c55e;
+padding:8px 15px;
+border-radius:8px;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(to right,#6366f1,#06b6d4);
+color:white;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* PRODUK */
+.container{
+padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+padding:20px;
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.price{
+color:#22c55e;
+font-size:20px;
+margin:10px 0;
+}
+
+button{
+background:#6366f1;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#4f46e5;
+}
+
+/* NOTIFIKASI */
+.toast{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#22c55e;
+color:white;
+padding:15px 25px;
+border-radius:10px;
+display:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.hero h1{
+font-size:28px;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">TOKO MIE KELOMPOK 3C</div>
+<div class="cart">🛒 Pesanan Saya: <span id="cartCount">0</span></div>
+</header>
+
+<section class="hero">
+<h1>Ayok nikmati kelejatan beragam mie hanya melalui toko kami</h1>
+<p>Harga murah • Kualitas terjamin • Makan bersama nikmat</p>
+</section>
+
+<section class="container">
+
+<div class="card">
+<img src="images/ayam.jpg">
+<h3>Mie Ayam</h3>
+<p class="price">Rp 15.000</p>
+<button onclick="addToCart()">Pesan Sekarang</button>
+</div>
+
+<div class="card">
+<img src="images/aceh.jpg">
+<h3>Mie Aceh</h3>
+<p class="price">Rp 15.000</p>
+<button onclick="addToCart()">Pesan Sekarang</button>
+</div>
+
+<div class="card">
+<img src="images/bangladesh.jpg">
+<h3>Mie Bangladesh</h3>
+<p class="price">Rp 15.000</p>
+<button onclick="addToCart()">Pesan Sekarang</button>
+</div>
+
+</section>
+
+<div class="toast" id="toast">Produk sudah masuk ke pesanan!</div>
+
+<script>
+let cart = 0;
+
+function addToCart(){
+cart++;
+document.getElementById("cartCount").innerText = cart;
+
+let toast = document.getElementById("toast");
+toast.style.display = "block";
+
+setTimeout(()=>{
+toast.style.display = "none";
+},2000);
+}
+</script>
+
+</body>
+</html>
